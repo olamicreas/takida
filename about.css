@@ -94,7 +94,7 @@ p {
 }
 
 header {
-    background-image: url('image0.jpeg'); /* Use a single background image */
+    background-image: url('website\ about\ me\ header\ x2.svg'); /* Use a single background image */
     background-position: top center; /* Start the image from the top center */
     background-repeat: no-repeat;
     background-size: cover; /* Ensures the image covers the entire header */

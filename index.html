@@ -60,7 +60,7 @@
                     <li class="nav-item"><a href="#bridal">Bridal</a></li>
                     <li class="nav-item"><a href="about.html">About</a></li>
                     <li class="nav-item"><a href="#client">Client</a></li>
-                    <li class="nav-item"><a href="">Shop</a></li>
+                    <li class="nav-item"><a href="https://pocketsuite.io/book/takida-makeup/items">Shop</a></li>
                     <li class="nav-item nav-btn"><a class="nav-book-appointment" id="booksUsButton">Book Appointment</a></li>
                 </ul>
             </nav>
@@ -360,7 +360,7 @@
         <button type="submit">Submit</button>
       </form>
     </div>
-  </div>
+</div>
 
   <!-- Pop-Up Subscription Form -->
 <div id="subscription-popup" class="popup-overlay">
@@ -376,7 +376,21 @@
 </div>
 
     </footer>
-
+    <script>
+        // JavaScript to handle changing placeholder
+        document.getElementById('subject').addEventListener('change', function() {
+            const messageInput = document.getElementById('message');
+            
+            // Check if "Review" is selected
+            if (this.value === 'review') {
+                messageInput.placeholder = "Write a review";
+            } else if(this.value == 'appointment') {
+                messageInput.placeholder = "Details of appointment";
+            } else {
+                messageInput.placeholder = 'Your Message'
+            }
+        });
+      </script>
     <script>
         // Wait for the entire page to load
 window.onload = function() {
@@ -386,7 +400,7 @@ window.onload = function() {
     setTimeout(() => {
         loader.style.display = 'none'; // Hide loader
        
-    }, 3000);
+    }, 1100);
    
 };
 
