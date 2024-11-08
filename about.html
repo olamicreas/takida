@@ -78,17 +78,36 @@
     <div class="about-carousel">
         <div class="about-carousel-track bridal-carousel-track">
            
-            <div class="about-carousel-slide"><img src="image4.jpeg" data-tooltip="Click for better view" alt="Image 4"></div>
-            <div class="about-carousel-slide"><img src="image5.jpeg" data-tooltip="Click for better view" alt="Image 5"></div>
-            <div class="about-carousel-slide"><img src="image6.jpeg" data-tooltip="Click for better view" alt="Image 6"></div>
-           
-            <div class="about-carousel-slide"><img src="image3.jpeg" data-tooltip="Click for better view" alt="Image 9"></div>
-            <div class="about-carousel-slide"><img src="image4.jpeg" data-tooltip="Click for better view" alt="Image 10"></div>
-            <div class="about-carousel-slide"><img src="image5.jpeg" data-tooltip="Click for better view" alt="Image 11"></div>
-            <div class="about-carousel-slide"><img src="image6.jpeg" data-tooltip="Click for better view" alt="Image 12"></div>
-            <div class="about-carousel-slide"><img src="image8.jpeg" data-tooltip="Click for better view" alt="Image 12"></div>
-            <div class="about-carousel-slide"><img src="image7.jpeg" data-tooltip="Click for better view" alt="Image 12"></div>
+            <div class="about-carousel-slide">
+                <img src="image4.jpeg" alt="In-home makeup artist NYC" aria-label="In-home makeup artist NYC" data-tooltip="Click for better view">
+            </div>
+            <div class="about-carousel-slide">
+                <img src="image5.jpeg" alt="Mobile makeup services NYC" aria-label="Mobile makeup services NYC" data-tooltip="Click for better view">
+            </div>
+            <div class="about-carousel-slide">
+                <img src="image6.jpeg" alt="Makeup artist house calls Long Island" aria-label="Makeup artist house calls Long Island" data-tooltip="Click for better view">
+            </div>
+            <div class="about-carousel-slide">
+                <img src="image3.jpeg" alt="Makeup artist house calls New York City" aria-label="Makeup artist house calls New York City" data-tooltip="Click for better view">
+            </div>
+            <div class="about-carousel-slide">
+                <img src="image4.jpeg" alt="On-location makeup services" aria-label="On-location makeup services" data-tooltip="Click for better view">
+            </div>
+            <div class="about-carousel-slide">
+                <img src="image5.jpeg" alt="Private makeup classes NYC" aria-label="Private makeup classes NYC" data-tooltip="Click for better view">
+            </div>
+            <div class="about-carousel-slide">
+                <img src="image6.jpeg" alt="Learn makeup techniques Long Island" aria-label="Learn makeup techniques Long Island" data-tooltip="Click for better view">
+            </div>
+            <div class="about-carousel-slide">
+                <img src="image8.jpeg" alt="Makeup classes for beginners" aria-label="Makeup classes for beginners" data-tooltip="Click for better view">
+            </div>
+            <div class="about-carousel-slide">
+                <img src="image7.jpeg" alt="Master your makeup look" aria-label="Master your makeup look" data-tooltip="Click for better view">
+            </div>
+        
         </div>
+        
         <button class="about-carousel-prev" onclick="aboutPrevSlide()">←</button>
         <button class="about-carousel-next" onclick="aboutNextSlide()">→</button>
     </div>
@@ -134,50 +153,65 @@
         </div>
     </div>
     <!-- Contact Modal Structure -->
-<div id="contactModal" class="modal">
-<div class="modal_content">
-    
-    <span class="close">&times;</span>
-    <h2>Contact Us</h2>
-    
-  <form id="contactForm">
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" required placeholder="Your Name">
-    
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" required placeholder="Your Email">
-    
-    <label for="subject">Subject</label>
-    <select id="subject" name="subject">
-      <option value="booking">Booking</option>
-      <option value="appointment">Appointment</option>
-      <option value="review">Review</option>
-    </select>
-    
-    <label for="message">Message</label>
-    <textarea id="message" name="message" rows="4" required placeholder="Your Message"></textarea>
-    
-    <button type="submit">Submit</button>
-  </form>
-</div>
-</div>
+    <div id="contactModal" class="modal">
+        <div class="modal_content">
+            
+            <span class="mclose">&times;</span>
+            <h2>Contact Us</h2>
+            
+            <form id="contactForm">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required placeholder="Your Name">
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="Your Email">
+                
+                <label for="subject">Subject</label>
+                <select id="subject" name="subject" required>
+                    
+                    <option value="appointment">Review</option>
+                    <option value="booking">Booking Request</option>
+                </select>
+                
+                <!-- Booking Details Fields -->
+                <div id="bookingDetails" style="display: none;">
+                    <label for="timeDate">Time & Date</label>
+                    <input type="text" id="timeDate" name="timeDate" placeholder="e.g., 15th June, 2 PM">
+                    
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" placeholder="Enter Location">
+                    
+                    <label for="desiredLook">Desired Look</label>
+                    <input type="text" id="desiredLook" name="desiredLook" placeholder="Describe your desired look">
+                </div>
+                
+                <!-- Message Box for Appointments -->
+                <div id="messageBox">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Write a review"></textarea>
+                </div>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
 </footer>
 
 <script>
-    // JavaScript to handle changing placeholder
+    // JavaScript to handle showing/hiding fields
     document.getElementById('subject').addEventListener('change', function() {
-        const messageInput = document.getElementById('message');
+        const bookingDetails = document.getElementById('bookingDetails');
+        const messageBox = document.getElementById('messageBox');
         
-        // Check if "Review" is selected
-        if (this.value === 'review') {
-            messageInput.placeholder = "Write a review";
-        } else if(this.value == 'appointment') {
-            messageInput.placeholder = "Details of appointment";
+        if (this.value === 'booking') {
+            bookingDetails.style.display = 'block'; // Show booking details fields
+            messageBox.style.display = 'none';      // Hide the message box
         } else {
-            messageInput.placeholder = 'Your Message'
+            bookingDetails.style.display = 'none';  // Hide booking details fields
+            messageBox.style.display = 'block';     // Show the message box
         }
     });
-  </script>
+</script>
 
 <script>
     // Wait for the entire page to load
