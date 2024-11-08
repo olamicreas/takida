@@ -93,9 +93,9 @@ p {
     font-family: 'Montserrat';
 }
 
-header {
+header2 {
     background-image: url('website\ about\ me\ header\ x2.svg'); /* Use a single background image */
-    background-position: top center; /* Start the image from the top center */
+    background-position: center; /* Start the image from the top center */
     background-repeat: no-repeat;
     background-size: cover; /* Ensures the image covers the entire header */
     background-color: #333; /* Fallback color while the image loads */
@@ -152,7 +152,7 @@ header {
 }
 
 .nav-links li a {
-    color: white;
+    color: black;
     text-decoration: none;
     font-weight: bold;
     font-family: 'Montserrat';
@@ -387,6 +387,9 @@ header {
     }
 }
 
+header {
+    margin-top: 7%;
+}
 
 @media screen and (max-width: 768px) {
     /* Adjust logo size for mobile */
@@ -400,8 +403,10 @@ header {
         margin-top: 20%;
     }
     header {
-        height: 100vh;
-        background-image: url(home3.jpeg);
+        height: 0vh;
+        margin-top: 17%;
+        
+       
     }
    
     .burger {

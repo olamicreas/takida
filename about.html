@@ -21,7 +21,7 @@
 
     <header>
         <div class="navbb">
-            <img class="logo" src="3.png" alt="Logo" id="navlogo">
+            <img class="logo" src="TAKIDA LOGO.png" alt="Logo" id="navlogo">
             <nav>
                 <div class="burger" id="burger">
                     <span id="bnav1"></span>
@@ -164,6 +164,22 @@
 </footer>
 
 <script>
+    // JavaScript to handle changing placeholder
+    document.getElementById('subject').addEventListener('change', function() {
+        const messageInput = document.getElementById('message');
+        
+        // Check if "Review" is selected
+        if (this.value === 'review') {
+            messageInput.placeholder = "Write a review";
+        } else if(this.value == 'appointment') {
+            messageInput.placeholder = "Details of appointment";
+        } else {
+            messageInput.placeholder = 'Your Message'
+        }
+    });
+  </script>
+
+<script>
     // Wait for the entire page to load
 window.onload = function() {
 const loader = document.getElementById('loader');
@@ -231,7 +247,7 @@ window.addEventListener('scroll', function() {
 
     } else {
         navbar.classList.remove('scrolled');
-        navlogo.src = '3.png'
+        navlogo.src = 'TAKIDA LOGO.png'
         burger.style.background ='black'
         burger1.style.background ='black'
         burger2.style.background ='black'
