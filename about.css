@@ -13,7 +13,7 @@ body {
 }
 
 /* Header with three background images side-by-side */
-header {
+header1 {
     background-image: url('about2.jpeg');
     background-position: center;
     background-repeat: no-repeat;
@@ -93,24 +93,25 @@ p {
     font-family: 'Montserrat';
 }
 
-header1 {
-    background-image: 
-        url('about2.jpeg'),
-        url('about.jpeg'),
-        url('about1.jpeg');
-    background-position: left center, center center, right center;
+header {
+    background-image: url('image0.jpeg'); /* Use a single background image */
+    background-position: top center; /* Start the image from the top center */
     background-repeat: no-repeat;
-    background-size: 33.33% 100%; /* Ensures images take up equal width */
-    background-color: #333; /* Fallback color while images load */
+    background-size: cover; /* Ensures the image covers the entire header */
+    background-color: #333; /* Fallback color while the image loads */
     height: 100vh;
-    padding: 40px;
+    padding: 0; /* Remove padding to ensure image starts from top */
+    margin: 0; /* Remove any margin that might push the image down */
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    color: white; /* Ensures contrast with background images */
+    color: white; /* Ensures contrast with the background image */
 }
+
+
+
 
 /* Navigation bar styling */
 .navbb {
@@ -307,6 +308,85 @@ header1 {
     display: none;
 }
 
+/* Container for entire content */
+.allcontent {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+/* Styling for the image container */
+.aboutimage {
+    position: relative;
+    width: 45%;
+    text-align: center;
+    padding: 0;
+}
+
+/* Styling for "Takida" text above the image */
+.name-heading {
+    font-family: Forum, serif;
+    font-size: 2.7rem;
+    font-weight: bold;
+    margin: 0;
+    color: black;
+    margin-bottom: 5px; /* Space between text and image */
+}
+
+/* Styling for the image */
+.aboutimage img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Styling for "About Me" section */
+.about {
+    width: 50%;
+    font-family: Montserrat, sans-serif;
+    padding-left: 20px;
+    color: #333;
+}
+
+.about h1, .about h3, .about h4 {
+    margin: 10px 0;
+}
+
+.about h1 {
+    font-size: 1.5rem;
+}
+
+.about h3 {
+    font-size: 1.1rem;
+}
+
+.about-content p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Adjust font size to fit the layout height */
+.about h4 {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .allcontent {
+        flex-direction: column;
+        align-items: center;
+    }
+    .aboutimage, .about {
+        width: 100%;
+    }
+    .name-heading {
+        font-size: 2.5rem;
+    }
+}
+
 
 @media screen and (max-width: 768px) {
     /* Adjust logo size for mobile */
@@ -314,6 +394,11 @@ header1 {
         width: 40%;
     }
 
+    
+    .name img {
+        width: 70%;
+        margin-top: 20%;
+    }
     header {
         height: 100vh;
         background-image: url(home3.jpeg);
@@ -1039,24 +1124,24 @@ header1 {
 
 
 .about {
-    padding: 60px 20px;
+    padding: 20px;
     background-color: #f9f9f9; /* Light background for contrast */
 }
 
 .about h1 {
-    font-size: 3em;
+    font-size: 2em;
     color: #333;
     margin-bottom: 20px;
 }
 
 .about h2 {
-    font-size: 2.5em;
+    font-size: 1.5em;
     color: #DFBE74;
     margin-bottom: 10px;
 }
 
 .about h3 {
-    font-size: 1.5em;
+    font-size: 0.5em;
     color: #777;
     margin-bottom: 40px;
 }
@@ -1069,7 +1154,7 @@ header1 {
 }
 
 .about-content h4 {
-    font-size: 1.8em;
+    font-size: 1.2em;
     color: #000;
     margin-top: 30px;
     text-align: center;
@@ -1077,7 +1162,7 @@ header1 {
 
 .about-content p {
     margin-bottom: 20px;
-    font-size: 1.1em;
+    font-size: 0.9em;
     color: #555;
 }
 

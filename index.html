@@ -7,9 +7,10 @@
     <!-- CSS Links -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Forum' rel='stylesheet'>
+
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="style.css">
     
@@ -60,7 +61,7 @@
                     <li class="nav-item"><a href="about.html">About</a></li>
                     <li class="nav-item"><a href="#client">Client</a></li>
                     <li class="nav-item"><a href="">Shop</a></li>
-                    <li class="nav-item nav-btn"><a class="nav-book-appointment" id="bookUsButton">Book Appointment</a></li>
+                    <li class="nav-item nav-btn"><a class="nav-book-appointment" id="booksUsButton">Book Appointment</a></li>
                 </ul>
             </nav>
             <button class="book-appointment desktop-button" id="bookAppointmentButton">Leave a review</button>
@@ -70,7 +71,7 @@
         <div class="name" data-aos="fade-left" data-aos-duration="3000">
             <img src="3.png" alt="TAKIDA">
             <p>Your Destination for a luxurious and <br>personalized makeup experience.</p>
-            <button class="header-main-button">BOOK NOW &#x2192;</button>
+            <button class="header-main-button" id="bookbook">BOOK NOW &#x2192;</button>
         </div>
     </header>
     
@@ -106,7 +107,7 @@
             <p class="bridal-description" style="font-family: Montserrat">
                 On your wedding day, we make sure you feel flawless and radiant with makeup tailored to your unique vision. Our team specializes in timeless, beautiful looks for you and your bridal party, ensuring everyone feels confident and stunning from “I do” to the last dance. With a calm, professional touch, we create an unforgettable experience that’s all about you. Book with us to bring your dream wedding look to life.
             </p>
-            <button class="book-us-button" id="booksUsButton">Book Now</button>
+            <button class="book-us-button" id="booksUsButton1">Book Now</button>
         </div>
         <br>
         <div class="about-carousel bridal-carousel">
@@ -137,17 +138,17 @@
     <!-- Client View Section -->
     <section class="client_view_section" id="client">
         <div class="client_content">
-            <h1 style="font-family: Forum; font-weight: bold;">Client View</h1>
-            <p>Explore our work with clients across different settings on social media.</p>
             <div class="bridal-content" data-aos="fade-up" data-aos-duration="3000">
+                <h1 style="font-family: Forum; font-weight: bold;">Client View</h1>
                 <p class="bridal-description" style="font-family: Montserrat; color: black;">
                     We provide professional makeup for all special occasions whether it’s a photoshoot, press event, on-set work, or a personal celebration. Our team creates custom looks to make you feel beautiful and camera-ready. House calls are available for your convenience, and we also offer makeup classes to help you master your own style
                 </p>
-                <button class="book-us-button" id="booksUsButton">Book Now</button>
+                <button class="book-us-button" id="booksUsButton2">Book Now</button>
             </div>
         </div>
     </section>
     <div class="about-carousel client-carousel">
+        
         <div class="about-carousel-track client-carousel-track">
 
             <div class="about-carousel-slide">
@@ -170,8 +171,6 @@
                    
                 </div>
             </div>
-
-
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
                     <img src="onset4.jpeg" data-tooltip="Click for better view" alt="Image 2">
@@ -256,6 +255,7 @@
                     
                 </div>
             </div>
+            
 
            
                 
@@ -277,9 +277,14 @@
                         
                   
         </div>
+        
         <button class="about-carousel-prev" onclick="clientPrevSlide()">←</button>
         <button class="about-carousel-next" onclick="clientNextSlide()">→</button>
     </div>
+    <div class="social-promo-container">
+        <p>Explore more of our work with clients across different settings on <a href="https://www.instagram.com/yourinstagramhandle" target="_blank" class="social-l">Instagram</a>.</p>
+    </div>
+    
     
         
  
@@ -300,21 +305,20 @@
                     <img src="3.png" alt="Brand Logo" class="logo">
                 </div>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com" target="_blank" class="social-icon">
+                    <a href="https://www.facebook.com/takidaltd" target="_blank" class="social-icon">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="https://www.instagram.com" target="_blank" class="social-icon">
+                    <a href="https://www.instagram.com/takidamakeup/" target="_blank" class="social-icon">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://www.twitter.com" target="_blank" class="social-icon">
+                    <a href="https://www.twitter.com/takida" target="_blank" class="social-icon">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="https://www.linkedin.com" target="_blank" class="social-icon">
-                        <i class="fab fa-linkedin-in"></i>
+                    <a href="https://www.tiktok.com/@takidamakeup?lang=en" target="_blank" class="social-icon">
+                        <i class="fab fa-tiktok"></i>
                     </a>
-                    <a href="https://www.pinterest.com" target="_blank" class="social-icon">
-                        <i class="fab fa-pinterest-p"></i>
-                    </a>
+                    
+                    
                 </div>
                 <div class="review-section">
                     <h5>Leave a Review</h5>
@@ -389,17 +393,25 @@ window.onload = function() {
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbb');
     const navlogo = document.getElementById('navlogo')
-    const burger = document.getElementById('bnav1 bnav2 bnav2')
+    const burger = document.getElementById('bnav1')
+    const burger1 = document.getElementById('bnav2')
+    const burger2 = document.getElementById('bnav3')
+    
     
     if (window.scrollY > 50) { // Adjust the scroll value as needed
         navbar.classList.add('scrolled');
         navlogo.src = '3.png'
         burger.style.background ='white'
+        burger1.style.background ='white'
+        burger2.style.background ='white'
+
 
     } else {
         navbar.classList.remove('scrolled');
         navlogo.src = 'TAKIDA LOGO.png'
-        burger.style.color ='black'
+        burger.style.background ='black'
+        burger1.style.background ='black'
+        burger2.style.background ='black'
     }
 });
 

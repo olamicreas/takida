@@ -73,9 +73,13 @@ function initializeSwiper() {
 function initializeModal() {
     const modal = document.getElementById("contactModal");
     const closeBtn = document.querySelector(".mclose");
-    const bookUsButton = document.querySelector("#booksUsButton");
+    const bookUsButton = document.getElementById("booksUsButton");
     const bookAppointmentButton = document.querySelector("#bookAppointmentButton");
     const writeReviewButton = document.getElementById("writeReviewButton");
+    const bookbook = document.getElementById('bookbook')
+    const booksUsButton1 = document.getElementById('booksUsButton1')
+    const booksUsButton2 = document.getElementById('booksUsButton2')
+
 
     function openModal() {
         modal.style.display = "flex";
@@ -95,6 +99,9 @@ function initializeModal() {
     bookUsButton.addEventListener("click", openModal);
     bookAppointmentButton.addEventListener("click", openModal);
     writeReviewButton.addEventListener("click", openModal);
+    bookbook.addEventListener('click', openModal)
+    booksUsButton1.addEventListener('click', openModal)
+    booksUsButton2.addEventListener('click', openModal)
 
     // Close modal when clicking close button
     closeBtn.addEventListener("click", closeModal);

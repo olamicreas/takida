@@ -336,7 +336,7 @@ header1 {
     }
 
     header {
-        background-image: url('home2.jpeg'); /* Ensure the path is correct */
+        background-image: url('aboutH.jpeg'); /* Ensure the path is correct */
         background-size: cover;
         background-position: center;
     }
@@ -356,6 +356,7 @@ header1 {
 
     .name img{
         width: 70%;
+        margin-top: 18%;
         
     }
 
@@ -1553,4 +1554,27 @@ header1 {
 
 #subscription-form button:hover {
     background-color: #555;
+}
+
+
+
+.social-promo-container {
+    background-color: rgba(0, 0, 0, 0.7); /* Black with 70% opacity */
+    padding: 20px;
+   
+    text-align: center;
+    max-width: 100%;
+    margin: 0 auto;
+    color: white; /* Ensure text is visible on dark background */
+}
+
+.social-l {
+    color: #E1306C; /* Instagram pink color */
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-l:hover {
+    color: #FFC0CB; /* Lighter pink for hover */
 }

@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Forum' rel='stylesheet'>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
    
    
     <link rel="stylesheet" href="about.css">
@@ -22,9 +24,9 @@
             <img class="logo" src="TAKIDA LOGO.png" alt="Logo" id="navlogo">
             <nav>
                 <div class="burger" id="burger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span id="bnav1"></span>
+                    <span id="bnav2"></span>
+                    <span id="bnav3"></span>
                 </div>
                 <ul class="nav-links">
                     <li class="nav-item"><a href="index.html">Home</a></li>
@@ -33,27 +35,27 @@
                     <li class="nav-item"><a href="index.html#client">Client</a></li>
                     <li class="nav-item"><a href="">Shop</a></li>
                     
-                    <li class="nav-item nav-btn"><a href="appointment.html" class="nav-book-appointment">Book Appointment</a></li>
+                    <li class="nav-item nav-btn" id="bookbook"><a href="appointment.html" class="nav-book-appointment">Book Appointment</a></li>
                 </ul>
             </nav>
             <button class="book-appointment desktop-button" id="bookAppointmentButton">Book an Appointment</button>
         </div>
-
-        <div class="name" data-aos="fade-left" data-aos-duration="3000">
-            <img src="3.png" alt="TAKIDA">
         
-        </div>
-       
+    
     </header>
     <div id="loader">
         <img src="3.png" alt="Loading..." class="loader-logo">
     </div>
 <main>
-    <section class="about">
-        <h1 style="font-family: Forum; font-weight: bold;">About Me</h1>
-        <h2 style="font-family: Forum; font-weight: bold;">Takida</h2>
-        <h3 style="font-family: Forum;">Professional Makeup Artist | Educator | Mentor | Philanthropist</h3>
+    
+    <section class="allcontent">
+    <section class="aboutimage" style="padding: 10px;" data-aos="fade-left" data-aos-duration="3000">
+        <h1 class="name-heading">Takida</h1>
+        <img src="image0.jpeg" alt="Takida">
+    </section>
 
+    <section class="about" data-aos="fade-right" data-aos-duration="3000">
+        
         <div class="about-content">
             <h4 style="font-family: Forum; font-weight: bold;">Professional Makeup Artist</h4>
             <p style="font-family: Montserrat;">My journey in makeup began on the beautiful island of Trinidad and Tobago. There, I established myself as a professional makeup artist known for my passion and skill. I quickly built a loyal clientele, becoming a trusted name in Trinidad and Tobago's beauty industry. I then launched my own salon, Beauty Hub, creating a space where clients could feel and look their best. I’ve always been a bit of a serial entrepreneur, expanding my skills and business with every opportunity.</p>
@@ -71,6 +73,7 @@
             <p style="font-family: Montserrat;">From my roots in Trinidad and Tobago to the big city, my journey has been filled with creativity, resilience, and faith.</p>
         </div>
     </section>
+</section>
     <div class="about-carousel">
         <div class="about-carousel-track bridal-carousel-track">
            
@@ -101,21 +104,19 @@
                 <img src="3.png" alt="Brand Logo" class="logo">
             </div>
             <div class="social-icons">
-                <a href="https://www.facebook.com" target="_blank" class="social-icon">
+                <a href="https://www.facebook.com/takidaltd" target="_blank" class="social-icon">
                     <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="https://www.instagram.com" target="_blank" class="social-icon">
+                <a href="https://www.instagram.com/takidamakeup/" target="_blank" class="social-icon">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://www.twitter.com" target="_blank" class="social-icon">
+                <a href="https://www.twitter.com/takida" target="_blank" class="social-icon">
                     <i class="fab fa-twitter"></i>
                 </a>
-                <a href="https://www.linkedin.com" target="_blank" class="social-icon">
-                    <i class="fab fa-linkedin-in"></i>
+                <a href="https://www.tiktok.com/@takidamakeup?lang=en" target="_blank" class="social-icon">
+                    <i class="fab fa-tiktok"></i>
                 </a>
-                <a href="https://www.pinterest.com" target="_blank" class="social-icon">
-                    <i class="fab fa-pinterest-p"></i>
-                </a>
+                
                 
             </div>
             <div class="review-section">
@@ -210,6 +211,32 @@ setTimeout(() => {
 }, 3000);
 
 };
+
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbb');
+    const navlogo = document.getElementById('navlogo')
+    const burger = document.getElementById('bnav1')
+    const burger1 = document.getElementById('bnav2')
+    const burger2 = document.getElementById('bnav3')
+    
+    
+    if (window.scrollY > 50) { // Adjust the scroll value as needed
+        navbar.classList.add('scrolled');
+        navlogo.src = '3.png'
+        burger.style.background ='white'
+        burger1.style.background ='white'
+        burger2.style.background ='white'
+
+
+    } else {
+        navbar.classList.remove('scrolled');
+        navlogo.src = 'TAKIDA LOGO.png'
+        burger.style.background ='black'
+        burger1.style.background ='black'
+        burger2.style.background ='black'
+    }
+});
+
 
 function about(){
 window.location.href = 'about.html'

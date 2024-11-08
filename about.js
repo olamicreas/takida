@@ -86,11 +86,14 @@ function aboutShowSlide(index) {
     const track = document.querySelector('.about-carousel-track');
     const slideWidth = slides[0].clientWidth;
 
+    // Calculate the number of slides visible based on screen width
+    const visibleSlides = window.innerWidth < 768 ? 1 : 3;
+
     // Ensure index is within bounds
     if (index < 0) {
         aboutCurrentIndex = 0; // Stay at the first slide
-    } else if (index >= slides.length - 3) { // Account for showing 3 slides at once
-        aboutCurrentIndex = slides.length - 3; // Stay at the last set of slides
+    } else if (index >= slides.length - visibleSlides) { // Account for visible slides
+        aboutCurrentIndex = slides.length - visibleSlides; // Stay at the last set of slides
     } else {
         aboutCurrentIndex = index; // Set to the provided index
     }
@@ -107,7 +110,8 @@ function aboutPrevSlide() {
 
 function aboutNextSlide() {
     const slides = document.querySelectorAll('.about-carousel-slide');
-    if (aboutCurrentIndex < slides.length - 3) { // Only move right if not at the end
+    const visibleSlides = window.innerWidth < 768 ? 1 : 3;
+    if (aboutCurrentIndex < slides.length - visibleSlides) { // Only move right if not at the end
         aboutShowSlide(aboutCurrentIndex + 1);
     }
 }
@@ -119,8 +123,11 @@ document.querySelector('.about-carousel-next').addEventListener('click', aboutNe
 // Optional: Automatically cycle through slides every 5 seconds
 setInterval(() => {
     const slides = document.querySelectorAll('.about-carousel-slide');
-    if (aboutCurrentIndex < slides.length - 3) { // Only advance if not on the last set of slides
+    const visibleSlides = window.innerWidth < 768 ? 1 : 3;
+    if (aboutCurrentIndex < slides.length - visibleSlides) { // Only advance if not on the last set of slides
         aboutNextSlide();
+    } else {
+        aboutShowSlide(0); // Reset to the first slide when reaching the end
     }
 }, 5000); // Change slide every 5 seconds
 
@@ -187,4 +194,6 @@ function initializeImages() {
 // Ensure the script initializes on DOM content loaded
 document.addEventListener('DOMContentLoaded', () => {
     initializeImages();
+    // Reinitialize slide width and visibility on window resize
+    window.addEventListener('resize', () => aboutShowSlide(aboutCurrentIndex));
 });
