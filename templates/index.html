@@ -12,7 +12,8 @@
     <link href='https://fonts.googleapis.com/css?family=Forum' rel='stylesheet'>
 
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
     
     <style>
         /* Custom styles for the bridal section */
@@ -48,7 +49,7 @@
     <header>
         <!-- Navigation Bar -->
         <div class="navbb">
-            <img class="logo" src="TAKIDA LOGO.png" alt="Logo" id="navlogo">
+            <img class="logo" src="{{url_for('static', filename='TAKIDA LOGO.png')}}" alt="Logo" id="navlogo">
             <nav>
                 <div class="burger" id="burger">
                     <span id="bnav1"></span>
@@ -56,11 +57,11 @@
                     <span id="bnav3"></span>
                 </div>
                 <ul class="nav-links">
-                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item"><a href="#">Home</a></li>
                     <li class="nav-item"><a href="#bridal">Bridal</a></li>
-                    <li class="nav-item"><a href="about.html">About</a></li>
+                    <li class="nav-item"><a href="{{url_for('about')}}">About</a></li>
                     <li class="nav-item"><a href="#client">Client</a></li>
-                    <li class="nav-item"><a href="https://pocketsuite.io/book/takida-makeup/items">Shop</a></li>
+                    <li class="nav-item"><a href="">Shop</a></li>
                     <li class="nav-item nav-btn"><a class="nav-book-appointment" id="booksUsButton">Book Appointment</a></li>
                 </ul>
             </nav>
@@ -69,7 +70,7 @@
     
         <!-- Main Content in Header -->
         <div class="name" data-aos="fade-left" data-aos-duration="3000">
-            <img src="3.png" alt="TAKIDA">
+            <img src="{{url_for('static', filename='3.png')}}" alt="TAKIDA">
             <p>Your Destination for a luxurious and <br>personalized makeup experience.</p>
             <button class="header-main-button" id="bookbook">BOOK NOW &#x2192;</button>
         </div>
@@ -78,21 +79,20 @@
     
     
     <div id="loader">
-        <img src="3.png" alt="Loading..." class="loader-logo">
+        <img src="{{url_for('static', filename='3.png')}}" alt="Loading..." class="loader-logo">
     </div>
     <!-- Partner Section -->
     <section class="partner">
         <p class="seen-in">As seen in</p>
         <div class="partner-logos">
-            <img src="hulu.png" alt="Hulu">
-          
-            <img src="emmy.png" alt="Emmy">
-            <img src="nyfw.png" alt="NYWA">
-            <img src="netflix.jpeg" alt="Netflix">
-            <img src="Giorgio_Armani.jpeg" alt="Giorgio Armani">
-            <img src="goodmorning.png" alt="Good Morning">
-         
+            <img src="{{ url_for('static', filename='hulu.png') }}" alt="Hulu">
+            <img src="{{ url_for('static', filename='emmy.png') }}" alt="Emmy">
+            <img src="{{ url_for('static', filename='nyfw.png') }}" alt="NYFW">
+            <img src="{{ url_for('static', filename='netflix.jpeg') }}" alt="Netflix">
+            <img src="{{ url_for('static', filename='Giorgio_Armani.jpeg') }}" alt="Giorgio Armani">
+            <img src="{{ url_for('static', filename='goodmorning.png') }}" alt="Good Morning">
         </div>
+        
         <p class="description">
            Pro Makeup Artist | Educator | Mentor .<br><br>
            NYC | Trinidad & Tobago
@@ -113,50 +113,49 @@
         <div class="about-carousel bridal-carousel">
             <div class="about-carousel-track bridal-carousel-track">
                 <div class="about-carousel-slide">
-                    <img src="bride1.jpeg" alt="Bridal makeup Long Island" aria-label="Bridal makeup Long Island" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='bride1.jpeg') }}" alt="Bridal makeup Long Island" aria-label="Bridal makeup Long Island" data-tooltip="Click for better view">
                 </div>
                 <div class="about-carousel-slide">
-                    <img src="bride2.jpeg" alt="Bridal makeup New York City" aria-label="Bridal makeup New York City" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='bride2.jpeg') }}" alt="Bridal makeup New York City" aria-label="Bridal makeup New York City" data-tooltip="Click for better view">
                 </div>
                 <div class="about-carousel-slide">
-                    <img src="bride3.jpeg" alt="Natural bridal makeup artist" aria-label="Natural bridal makeup artist" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='bride3.jpeg') }}" alt="Natural bridal makeup artist" aria-label="Natural bridal makeup artist" data-tooltip="Click for better view">
                 </div>
                 <div class="about-carousel-slide">
-                    <img src="bride4.jpeg" alt="Flawless wedding day look" aria-label="Flawless wedding day look" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='bride4.jpeg') }}" alt="Flawless wedding day look" aria-label="Flawless wedding day look" data-tooltip="Click for better view">
                 </div>
                 <div class="about-carousel-slide">
-                    <img src="bride9.jpeg" alt="Soft glam bridal makeup" aria-label="Soft glam bridal makeup" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='bride9.jpeg') }}" alt="Soft glam bridal makeup" aria-label="Soft glam bridal makeup" data-tooltip="Click for better view">
                 </div>
                 <div class="about-carousel-slide">
-                    <img src="bride6.jpeg" alt="Luxury bridal makeup service" aria-label="Luxury bridal makeup service" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='bride6.jpeg') }}" alt="Luxury bridal makeup service" aria-label="Luxury bridal makeup service" data-tooltip="Click for better view">
                 </div>
                 <div class="about-carousel-slide">
-                    <img src="bride13.jpeg" alt="Bridal party makeup NYC" aria-label="Bridal party makeup NYC" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='bride13.jpeg') }}" alt="Bridal party makeup NYC" aria-label="Bridal party makeup NYC" data-tooltip="Click for better view">
                 </div>
                 <div class="about-carousel-slide">
-                    <img src="bride7.jpeg" alt="Bridal makeup Long Island" aria-label="Bridal makeup Long Island" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='bride7.jpeg') }}" alt="Bridal makeup Long Island" aria-label="Bridal makeup Long Island" data-tooltip="Click for better view">
                 </div>
                 <div class="about-carousel-slide">
-                    <img src="bride5.jpeg" alt="Bridal makeup New York City" aria-label="Bridal makeup New York City" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='bride5.jpeg') }}" alt="Bridal makeup New York City" aria-label="Bridal makeup New York City" data-tooltip="Click for better view">
                 </div>
                 <div class="about-carousel-slide">
-                    <img src="bride8.jpeg" alt="Natural bridal makeup artist" aria-label="Natural bridal makeup artist" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='bride8.jpeg') }}" alt="Natural bridal makeup artist" aria-label="Natural bridal makeup artist" data-tooltip="Click for better view">
                 </div>
                 <div class="about-carousel-slide">
-                    <img src="bride10.jpeg" alt="Flawless wedding day look" aria-label="Flawless wedding day look" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='bride10.jpeg') }}" alt="Flawless wedding day look" aria-label="Flawless wedding day look" data-tooltip="Click for better view">
                 </div>
                 <div class="about-carousel-slide">
-                    <img src="bride11.jpeg" alt="Soft glam bridal makeup" aria-label="Soft glam bridal makeup" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='bride11.jpeg') }}" alt="Soft glam bridal makeup" aria-label="Soft glam bridal makeup" data-tooltip="Click for better view">
                 </div>
                 <div class="about-carousel-slide">
-                    <img src="bride12.jpeg" alt="Luxury bridal makeup service" aria-label="Luxury bridal makeup service" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='bride12.jpeg') }}" alt="Luxury bridal makeup service" aria-label="Luxury bridal makeup service" data-tooltip="Click for better view">
                 </div>
             </div>
-            
+        
             <button class="about-carousel-prev" onclick="bridalPrevSlide()">←</button>
             <button class="about-carousel-next" onclick="bridalNextSlide()">→</button>
-    
-        </div>
+        </div>        
     </section>
 
     <!-- Client View Section -->
@@ -174,89 +173,88 @@
     <div class="about-carousel client-carousel">
         
         <div class="about-carousel-track client-carousel-track">
-
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
-                    <img src="photoshoot1.jpeg" alt="Professional makeup artist for events" aria-label="Professional makeup artist for events" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='photoshoot1.jpeg') }}" alt="Professional makeup artist for events" aria-label="Professional makeup artist for events" data-tooltip="Click for better view">
                 </div>
             </div>
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
-                    <img src="makeup2.jpeg" alt="Makeup for photoshoots" aria-label="Makeup for photoshoots" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='makeup2.jpeg') }}" alt="Makeup for photoshoots" aria-label="Makeup for photoshoots" data-tooltip="Click for better view">
                 </div>
             </div>
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
-                    <img src="press.jpeg" alt="Makeup artist for press appearances" aria-label="Makeup artist for press appearances" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='press.jpeg') }}" alt="Makeup artist for press appearances" aria-label="Makeup artist for press appearances" data-tooltip="Click for better view">
                 </div>
             </div>
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
-                    <img src="onset4.jpeg" alt="On-set makeup artist NYC" aria-label="On-set makeup artist NYC" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='onset4.jpeg') }}" alt="On-set makeup artist NYC" aria-label="On-set makeup artist NYC" data-tooltip="Click for better view">
                 </div>
             </div>
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
-                    <img src="special1.jpeg" alt="Special event makeup NYC" aria-label="Special event makeup NYC" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='special1.jpeg') }}" alt="Special event makeup NYC" aria-label="Special event makeup NYC" data-tooltip="Click for better view">
                 </div>
             </div>
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
-                    <img src="special2.jpeg" alt="Makeup for photoshoots New York City" aria-label="Makeup for photoshoots New York City" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='special2.jpeg') }}" alt="Makeup for photoshoots New York City" aria-label="Makeup for photoshoots New York City" data-tooltip="Click for better view">
                 </div>
             </div>
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
-                    <img src="onset5.jpeg" alt="Personalized makeup experience" aria-label="Personalized makeup experience" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='onset5.jpeg') }}" alt="Personalized makeup experience" aria-label="Personalized makeup experience" data-tooltip="Click for better view">
                 </div>
             </div>
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
-                    <img src="photoshoot3.jpeg" alt="Feel beautiful inside and out" aria-label="Feel beautiful inside and out" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='photoshoot3.jpeg') }}" alt="Feel beautiful inside and out" aria-label="Feel beautiful inside and out" data-tooltip="Click for better view">
                 </div>
             </div>
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
-                    <img src="onset.jpeg" alt="Transformative makeup session" aria-label="Transformative makeup session" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='onset.jpeg') }}" alt="Transformative makeup session" aria-label="Transformative makeup session" data-tooltip="Click for better view">
                 </div>
             </div>
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
-                    <img src="photoshoot.jpeg" alt="Look and feel your best makeup" aria-label="Look and feel your best makeup" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='photoshoot.jpeg') }}" alt="Look and feel your best makeup" aria-label="Look and feel your best makeup" data-tooltip="Click for better view">
                 </div>
             </div>
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
-                    <img src="press1.jpeg" alt="Professional makeup artist for events" aria-label="Professional makeup artist for events" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='press1.jpeg') }}" alt="Professional makeup artist for events" aria-label="Professional makeup artist for events" data-tooltip="Click for better view">
                 </div>
             </div>
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
-                    <img src="onset3.jpeg" alt="Makeup for photoshoots New York City" aria-label="Makeup for photoshoots New York City" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='onset3.jpeg') }}" alt="Makeup for photoshoots New York City" aria-label="Makeup for photoshoots New York City" data-tooltip="Click for better view">
                 </div>
             </div>
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
-                    <img src="makeup6.jpeg" alt="Black Makeup Artist Long Island" aria-label="Black Makeup Artist Long Island" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='makeup6.jpeg') }}" alt="Black Makeup Artist Long Island" aria-label="Black Makeup Artist Long Island" data-tooltip="Click for better view">
                 </div>
             </div>
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
-                    <img src="makeup.jpeg" alt="Look and feel your best makeup" aria-label="Look and feel your best makeup" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='makeup.jpeg') }}" alt="Look and feel your best makeup" aria-label="Look and feel your best makeup" data-tooltip="Click for better view">
                 </div>
             </div>
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
-                    <img src="special.jpeg" alt="Transformative makeup session" aria-label="Transformative makeup session" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='special.jpeg') }}" alt="Transformative makeup session" aria-label="Transformative makeup session" data-tooltip="Click for better view">
                 </div>
             </div>
             <div class="about-carousel-slide">
                 <div class="carousel-image-container">
-                    <img src="photoshoot2.jpeg" alt="Makeup artist for press appearances" aria-label="Makeup artist for press appearances" data-tooltip="Click for better view">
+                    <img src="{{ url_for('static', filename='photoshoot2.jpeg') }}" alt="Makeup artist for press appearances" aria-label="Makeup artist for press appearances" data-tooltip="Click for better view">
                 </div>
             </div>
-        
         </div>
+        
         
         
         <button class="about-carousel-prev" onclick="clientPrevSlide()">←</button>
@@ -283,7 +281,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="3.png" alt="Brand Logo" class="logo">
+                    <img src="{{url_for('static', filename='3.png')}}" alt="Brand Logo" class="logo">
                 </div>
                 <div class="social-icons">
                     <a href="https://www.facebook.com/takidaltd" target="_blank" class="social-icon">
@@ -307,7 +305,7 @@
                 </div>
                 <div class="mailing-list">
                     <h5>Join Our Mailing List</h5>
-                    <form id="mailing-list-form">
+                    <form id="mailing-list-form" method="post" action="{{ url_for('subscribe') }}">
                         <input type="email" placeholder="Enter your email" required>
                         <button type="submit">Subscribe</button>
                     </form>
@@ -321,7 +319,7 @@
                 <span class="mclose">&times;</span>
                 <h2>Contact Us</h2>
                 
-                <form id="contactForm">
+                <form id="contactForm" method="post" action="send_mail">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required placeholder="Your Name">
                     
@@ -364,10 +362,11 @@
         <button class="close-button" onclick="closePopup()">✖</button>
         <h2>Subscribe to Our Newsletter</h2>
         <p>Get the latest updates and exclusive offers straight to your inbox.</p>
-        <form id="subscription-form">
-            <input type="email" placeholder="Enter your email" required>
+        <form id="subscription-form" method="post" action="{{ url_for('subscribe') }}">
+            <input type="email" name="email" placeholder="Enter your email" required>
             <button type="submit">Subscribe</button>
         </form>
+        
     </div>
 </div>
 
@@ -410,7 +409,7 @@ window.addEventListener('scroll', function() {
     
     if (window.scrollY > 50) { // Adjust the scroll value as needed
         navbar.classList.add('scrolled');
-        navlogo.src = '3.png'
+        navlogo.src = "static/3.png"
         burger.style.background ='white'
         burger1.style.background ='white'
         burger2.style.background ='white'
@@ -418,7 +417,7 @@ window.addEventListener('scroll', function() {
 
     } else {
         navbar.classList.remove('scrolled');
-        navlogo.src = 'TAKIDA LOGO.png'
+        navlogo.src = 'static/TAKIDA LOGO.png'
         burger.style.background ='black'
         burger1.style.background ='black'
         burger2.style.background ='black'
@@ -427,7 +426,7 @@ window.addEventListener('scroll', function() {
 
 
 function about(){
-    window.location.href = 'about.html'
+    window.location.href = 'about'
 }
 
     </script>
@@ -464,7 +463,8 @@ window.onclick = function(event) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
     
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
 
 </body>
 </html>
