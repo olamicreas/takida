@@ -168,13 +168,17 @@
                 
                 <label for="subject">Subject</label>
                 <select id="subject" name="subject" required>
-                    
-                    <option value="appointment">Review</option>
                     <option value="booking">Booking Request</option>
+                    <option value="appointment">Review</option>
+                    
                 </select>
                 
+                <div id="messageBox" style="display: none;">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Write a review"></textarea>
+                </div>
                 <!-- Booking Details Fields -->
-                <div id="bookingDetails" style="display: none;">
+                <div id="bookingDetails" >
                     <label for="timeDate">Time & Date</label>
                     <input type="text" id="timeDate" name="timeDate" placeholder="e.g., 15th June, 2 PM">
                     
@@ -186,10 +190,7 @@
                 </div>
                 
                 <!-- Message Box for Appointments -->
-                <div id="messageBox">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Write a review"></textarea>
-                </div>
+               
                 
                 <button type="submit">Submit</button>
             </form>
@@ -206,7 +207,7 @@
         if (this.value === 'booking') {
             bookingDetails.style.display = 'block'; // Show booking details fields
             messageBox.style.display = 'none';      // Hide the message box
-        } else {
+        } else{
             bookingDetails.style.display = 'none';  // Hide booking details fields
             messageBox.style.display = 'block';     // Show the message box
         }
