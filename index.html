@@ -330,13 +330,13 @@
                     
                     <label for="subject">Subject</label>
                     <select id="subject" name="subject" required>
-                        
-                        <option value="appointment">Review</option>
                         <option value="booking">Booking Request</option>
+                        <option value="appointment">Review</option>
+                       
                     </select>
                     
                     <!-- Booking Details Fields -->
-                    <div id="bookingDetails" style="display: none;">
+                    <div id="bookingDetails" >
                         <label for="timeDate">Time & Date</label>
                         <input type="text" id="timeDate" name="timeDate" placeholder="e.g., 15th June, 2 PM">
                         
@@ -348,7 +348,7 @@
                     </div>
                     
                     <!-- Message Box for Appointments -->
-                    <div id="messageBox">
+                    <div id="messageBox" style="display: none;">
                         <label for="message">Message</label>
                         <textarea id="message" name="message" rows="4" placeholder="Write a review"></textarea>
                     </div>
