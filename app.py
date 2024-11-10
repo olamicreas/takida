@@ -42,11 +42,16 @@ def send_mail():
             body = f"Review from {name}:\n\n{message}"
 
         # Sending email
-        msg = Message(subject=f"{subject.capitalize()} Request from {name}", recipients=['takidamkeup@gmail.com'])
-        msg.body = body
-        mail.send(msg)
+        try:
+            msg = Message(subject=f"{subject.capitalize()} Request from {name}", recipients=['takidamkeup@gmail.com'])
+            msg.body = body
+            mail.send(msg)
+            flash("Your form was submitted successfully!")
+        except Exception as e:
+            flash(f"Error sending email: {str(e)}")  # Display the error message
+            app.logger.error(f"Error sending email: {str(e)}")  # Log the error
+            return redirect(url_for('index'))
 
-        flash("Your form was submitted successfully!")
         return redirect(url_for('index'))
 
     return redirect(url_for('index'))
@@ -56,10 +61,16 @@ def send_mail():
 def subscribe():
     email = request.form.get('email')
     if email:
-        msg = Message("Subscription Request", recipients=['takidamkeup@gmail.com'])
-        msg.body = f"New subscriber: {email}"
-        mail.send(msg)
-        flash("Thank you for subscribing!")
+        try:
+            msg = Message("Subscription Request", recipients=['takidamkeup@gmail.com'])
+            msg.body = f"New subscriber: {email}"
+            mail.send(msg)
+            flash("Thank you for subscribing!")  # Success message
+        except Exception as e:
+            flash("Error sending subscription email. Please try again later.")  # User-friendly error message
+            app.logger.error(f"Error sending subscription email: {str(e)}")  # Log error for debugging
+            return redirect(url_for('index'))
+
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
