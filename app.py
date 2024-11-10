@@ -7,11 +7,11 @@ app = Flask(__name__)
 # Flask-Mail configuration
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'olamicreas@gmail.com'
-app.config['MAIL_PASSWORD'] = 'svyp opql amtv gsva'
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')  # Your email here
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')  # Your email password here
+app.config['MAIL_DEFAULT_SENDER'] = app.config['MAIL_USERNAME']
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_DEFAULT_SENDER'] = 'olamicreas@gmail.com' # Your email password here
 
 mail = Mail(app)
 
@@ -42,7 +42,7 @@ def send_mail():
             body = f"Review from {name}:\n\n{message}"
 
         # Sending email
-        msg = Message(subject=f"{subject.capitalize()} Request from {name}", recipients=[app.config['MAIL_USERNAME']])
+        msg = Message(subject=f"{subject.capitalize()} Request from {name}", recipients=['takidamkeup@gmail.com'])
         msg.body = body
         mail.send(msg)
 
@@ -56,7 +56,7 @@ def send_mail():
 def subscribe():
     email = request.form.get('email')
     if email:
-        msg = Message("Subscription Request", recipients=[app.config['MAIL_USERNAME']])
+        msg = Message("Subscription Request", recipients=['takidamkeup@gmail.com'])
         msg.body = f"New subscriber: {email}"
         mail.send(msg)
         flash("Thank you for subscribing!")
