@@ -74,14 +74,30 @@ function initializeModal() {
     const modal = document.getElementById("contactModal");
     const closeBtn = document.querySelector(".mclose");
     const bookUsButton = document.getElementById("booksUsButton");
-    const bookAppointmentButton = document.querySelector("#bookAppointmentButton");
+    const bookAppointmentButton = document.getElementById("bookAppointmentButton");
     const writeReviewButton = document.getElementById("writeReviewButton");
     const bookbook = document.getElementById('bookbook')
     const booksUsButton1 = document.getElementById('booksUsButton1')
     const booksUsButton2 = document.getElementById('booksUsButton2')
+    const subjectDropdown = document.getElementById("subject");
 
-
-    function openModal() {
+    function toggleFields() {
+        if (subjectDropdown.value === "appointment") {
+            bookingDetails.style.display = "none";
+            messageBox.style.display = "block";
+        } else {
+            bookingDetails.style.display = "block";
+            messageBox.style.display = "none";
+        }
+    }
+    function openModal(defaultToReview = false) {
+        if (defaultToReview) {
+            subjectDropdown.value = "booking";
+            toggleFields();
+        } else {
+            subjectDropdown.value = "appointment";
+            toggleFields();
+        }
         modal.style.display = "flex";
         setTimeout(() => {
             modal.querySelector(".modal_content").style.transform = "translateY(0)";
@@ -97,7 +113,7 @@ function initializeModal() {
 
     // Event Listeners for opening modal
     bookUsButton.addEventListener("click", openModal);
-    bookAppointmentButton.addEventListener("click", openModal);
+    bookAppointmentButton.addEventListener("click", () => openModal(false));
     writeReviewButton.addEventListener("click", openModal);
     bookbook.addEventListener('click', openModal)
     booksUsButton1.addEventListener('click', openModal)
@@ -111,7 +127,6 @@ function initializeModal() {
         if (e.target === modal) closeModal();
     });
 }
-
 let bridalIndex = 0;
 let clientIndex = 0;
 
