@@ -3,7 +3,7 @@ from flask_mail import Mail, Message
 import os
 
 app = Flask(__name__)
-
+app.secret_key = 'your_secret_key_here'
 # Flask-Mail configuration
 app.config['MAIL_SERVER']='smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
@@ -75,5 +75,5 @@ def subscribe():
     return redirect(request.referrer)
 
 if __name__ == '__main__':
-    app.secret_key = 'your_secret_key'
+    
     app.run(debug=True)
