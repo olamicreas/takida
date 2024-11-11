@@ -45,12 +45,29 @@ document.addEventListener('DOMContentLoaded', () => {
 // Modal Initialization and Functionality
 function initializeModal() {
     const modal = document.getElementById("contactModal");
-    const closeBtn = document.querySelector(".close");
-    const bookUsButton = document.getElementById("bookUsButton");
+    const closeBtn = document.querySelector(".mclose");
+    const bookUsButton = document.getElementById("bookbook");
     const bookAppointmentButton = document.getElementById("bookAppointmentButton");
     const writeReviewButton = document.getElementById("writeReviewButton");
+    const subjectDropdown = document.getElementById("subject");
 
-    function openModal() {
+    function toggleFields() {
+        if (subjectDropdown.value === "review") {
+            bookingDetails.style.display = "none";
+            messageBox.style.display = "block";
+        } else {
+            bookingDetails.style.display = "block";
+            messageBox.style.display = "none";
+        }
+    }
+    function openModal(defaultToReview = false) {
+        if (defaultToReview) {
+            subjectDropdown.value = "booking";
+            toggleFields();
+        } else {
+            subjectDropdown.value = "review";
+            toggleFields();
+        }
         modal.style.display = "flex";
         setTimeout(() => {
             modal.querySelector(".modal_content").style.transform = "translateY(0)";
@@ -65,12 +82,13 @@ function initializeModal() {
     }
 
     // Event Listeners for opening modal
-    if (bookUsButton) bookUsButton.addEventListener("click", openModal);
-    if (bookAppointmentButton) bookAppointmentButton.addEventListener("click", openModal);
-    if (writeReviewButton) writeReviewButton.addEventListener("click", openModal);
+    bookUsButton.addEventListener("click", openModal);
+    bookAppointmentButton.addEventListener("click", openModal);
+    writeReviewButton.addEventListener("click", () => openModal(false));
+    
 
     // Close modal when clicking close button
-    if (closeBtn) closeBtn.addEventListener("click", closeModal);
+    closeBtn.addEventListener("click", closeModal);
 
     // Close modal when clicking outside the content
     modal.addEventListener("click", (e) => {

@@ -111,6 +111,27 @@
     cursor: pointer;
 }
 
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 1.5em;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #FFD700;
+}
 
     </style>
 
@@ -148,6 +169,7 @@
                     <li class="nav-item"><a href="{{url_for('about')}}">About</a></li>
                     <li class="nav-item"><a href="#client">Client</a></li>
                     <li class="nav-item"><a href="">Shop</a></li>
+                    <li class="nav-item"><a href="{{url_for('reviews')}}">Reviews</a></li>
                     <li class="nav-item nav-btn"><a class="nav-book-appointment" id="booksUsButton">Book Appointment</a></li>
                 </ul>
             </nav>
@@ -402,11 +424,10 @@
         <!-- Contact Modal Structure -->
         <div id="contactModal" class="modal">
             <div class="modal_content">
-                
                 <span class="mclose">&times;</span>
                 <h2>Contact Us</h2>
                 
-                <form id="contactForm" method="post" action="send_mail">
+                <form id="contactForm" method="post" action="send_mail" enctype="multipart/form-data">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required placeholder="Your Name">
                     
@@ -416,12 +437,11 @@
                     <label for="subject">Subject</label>
                     <select id="subject" name="subject" required>
                         <option value="booking">Booking Request</option>
-                        <option value="appointment">Review</option>
-                       
+                        <option value="review">Review</option>
                     </select>
                     
                     <!-- Booking Details Fields -->
-                    <div id="bookingDetails" >
+                    <div id="bookingDetails">
                         <label for="timeDate">Time & Date</label>
                         <input type="text" id="timeDate" name="timeDate" placeholder="e.g., 15th June, 2 PM">
                         
@@ -432,8 +452,32 @@
                         <input type="text" id="desiredLook" name="desiredLook" placeholder="Describe your desired look">
                     </div>
                     
-                    <!-- Message Box for Appointments -->
+                    <!-- Message Box for Reviews -->
                     <div id="messageBox" style="display: none;">
+                        
+                        
+                        <!-- Star Rating -->
+                        <label>Rating</label>
+                        <div class="star-rating">
+                            <input type="radio" id="star5" name="rating" value="5">
+                            <label for="star5" title="5 stars">&#9733;</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4" title="4 stars">&#9733;</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3" title="3 stars">&#9733;</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2" title="2 stars">&#9733;</label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1" title="1 star">&#9733;</label>
+                        </div>
+        
+                        <!-- Job Title -->
+                        <label for="jobTitle">Job Title</label>
+                        <input type="text" id="jobTitle" name="jobTitle" placeholder="Your Job Title">
+        
+                        <!-- Image Upload -->
+                        <label for="reviewImage">Image url</label>
+                        <input type="text" id="reviewImage" name="reviewImage" accept="image/*">
                         <label for="message">Message</label>
                         <textarea id="message" name="message" rows="4" placeholder="Write a review"></textarea>
                     </div>
@@ -442,6 +486,7 @@
                 </form>
             </div>
         </div>
+        
 
   <!-- Pop-Up Subscription Form -->
 <div id="subscription-popup" class="popup-overlay">

@@ -82,7 +82,7 @@ function initializeModal() {
     const subjectDropdown = document.getElementById("subject");
 
     function toggleFields() {
-        if (subjectDropdown.value === "appointment") {
+        if (subjectDropdown.value === "review") {
             bookingDetails.style.display = "none";
             messageBox.style.display = "block";
         } else {
@@ -95,7 +95,7 @@ function initializeModal() {
             subjectDropdown.value = "booking";
             toggleFields();
         } else {
-            subjectDropdown.value = "appointment";
+            subjectDropdown.value = "review";
             toggleFields();
         }
         modal.style.display = "flex";
@@ -114,7 +114,7 @@ function initializeModal() {
     // Event Listeners for opening modal
     bookUsButton.addEventListener("click", openModal);
     bookAppointmentButton.addEventListener("click", () => openModal(false));
-    writeReviewButton.addEventListener("click", openModal);
+    writeReviewButton.addEventListener("click", () => openModal(false));
     bookbook.addEventListener('click', openModal)
     booksUsButton1.addEventListener('click', openModal)
     booksUsButton2.addEventListener('click', openModal)
