@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Review Approval</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 { text-align: center; color: #333; font-size: 2rem; }
+        .review-card {
+            background-color: #fff;
+            padding: 15px;
+            margin: 15px auto;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #DFBE74;
+        }
+        .review-card h3, .review-card p { margin: 5px 0; }
+        form { display: inline-block; }
+        .btn {
+            border: none; padding: 8px 12px; margin: 5px;
+            cursor: pointer; border-radius: 3px; font-weight: bold;
+        }
+        .approve-btn { background-color: #28a745; color: #fff; }
+        .reject-btn { background-color: #dc3545; color: #fff; }
+    </style>
+</head>
+<body>
+    <h1>Pending Reviews for Approval</h1>
+    {% for review in reviews %}
+    <div class="review-card">
+        <h3>{{ review.name }}</h3>
+        <p><strong>Rating:</strong> {{ review.rating }}</p>
+        <p><strong>Job Title:</strong> {{ review.job_title }}</p>
+        <p>{{ review.message }}</p>
+        {% if review.review_image %}
+            <img src="{{ review.review_image }}" alt="Review Image" style="width: 80px; height: 80px; border-radius: 4px;">
+        {% endif %}
+
+        <!-- Form to approve or reject the review -->
+        <form action="{{ url_for('review_approval') }}" method="post">
+            <input type="hidden" name="review_index" value="{{ loop.index0 }}">
+            <button type="submit" name="action" value="approve" class="btn approve-btn">Approve</button>
+            <button type="submit" name="action" value="reject" class="btn reject-btn">Reject</button>
+        </form>
+    </div>
+    {% endfor %}
+</body>
+</html>

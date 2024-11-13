@@ -9,28 +9,26 @@ app.secret_key = 'your_secret_key_here'
 # Flask-Mail configuration
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')  # Your email here
-app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')  # Your email password here
+app.config['MAIL_USERNAME'] = 'takidamakeup@gmail.com'
+app.config['MAIL_PASSWORD'] = 'xumzbbrrbacnkyvj'
 app.config['MAIL_DEFAULT_SENDER'] = app.config['MAIL_USERNAME']
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 
 mail = Mail(app)
 
-# Load reviews from a JSON file
+# Load all reviews from JSON file
 def load_reviews():
     try:
         with open('reviews.json', 'r') as file:
             return json.load(file)
     except (FileNotFoundError, json.JSONDecodeError):
-        return []
+        return {"approved": [], "pending": []}
 
-# Save reviews to a JSON file
-def save_review(review):
-    reviews = load_reviews()
-    reviews.append(review)
+# Save the review data to JSON file
+def save_reviews(data):
     with open('reviews.json', 'w') as file:
-        json.dump(reviews, file)
+        json.dump(data, file)
 
 @app.route('/')
 def index():
@@ -42,13 +40,12 @@ def about():
 
 @app.route('/reviews')
 def reviews():
-    # Load reviews to display on the reviews page
-    reviews = load_reviews()
+    # Only load and display approved reviews
+    reviews = load_reviews().get("approved", [])
     return render_template('review.html', reviews=reviews)
 
 @app.route('/send_mail', methods=['POST'])
 def send_mail():
-    # Handle contact form
     if request.form.get('name') and request.form.get('email'):
         name = request.form['name']
         email = request.form['email']
@@ -71,7 +68,7 @@ def send_mail():
                 return redirect(request.referrer)
         
         elif subject == 'review':
-            # Handle review details and save review
+            # Handle review details and save as pending
             rating = request.form.get('rating')
             job_title = request.form.get('jobTitle')
             review_image = request.form.get('reviewImage')
@@ -85,21 +82,60 @@ def send_mail():
                 "review_image": review_image,
                 "message": message
             }
-            # Save the review to a JSON file
-            save_review(review_data)
-            flash("Your review was submitted successfully!")
+            
+            # Load current reviews and add the new one as pending
+            data = load_reviews()
+            data["pending"].append(review_data)
+            save_reviews(data)
+            flash("Your review was submitted and is awaiting approval!")
+            msg = Message(subject=f"Review from {name}", recipients=['takidamakeup@gmail.com'])
+            body = f"click here to accept or reject the review {'https://takidamakeup.com/admin/review-approval'}"
+            msg.body = body
+            try:
+                mail.send(msg)
+                
+            except Exception as e:
+                flash(f"Error sending email: {str(e)}")
+                app.logger.error(f"Error sending email: {str(e)}")
+                return redirect(request.referrer)
         
         return redirect(request.referrer)
 
     return redirect(request.referrer)
 
-# For handling the subscription form
+# Admin route to approve or reject reviews
+@app.route('/admin/review-approval', methods=['GET', 'POST'])
+def review_approval():
+    data = load_reviews()
+    pending_reviews = data.get("pending", [])
+
+    if request.method == 'POST':
+        # Get the action and review index
+        review_index = int(request.form['review_index'])
+        action = request.form['action']
+
+        if action == 'approve':
+            # Move review from pending to approved
+            approved_review = pending_reviews.pop(review_index)
+            data["approved"].append(approved_review)
+           
+        elif action == 'reject':
+            # Remove review from pending
+            pending_reviews.pop(review_index)
+           
+
+        # Save changes to reviews.json
+        data["pending"] = pending_reviews
+        save_reviews(data)
+
+    return render_template('review_approval.html', reviews=pending_reviews)
+
 @app.route('/subscribe', methods=['POST'])
 def subscribe():
     email = request.form.get('email')
     if email:
         try:
-            msg = Message("Subscription Request", recipients=['takidamakeup@gmail.com'])
+            msg = Message("Subscription Request", recipients=['info@takidamakeup.com'])
             msg.body = f"New subscriber: {email}"
             mail.send(msg)
             flash("Thank you for subscribing!")
